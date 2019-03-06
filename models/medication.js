@@ -27,14 +27,7 @@ app.post('/Add_Medication',(req,res) => {
       },(e) => {
         res.status(400).send(e);
       });
-    //}
-    //else{
-      // return res.status(500).json({
-       //title:'Not Allowed',
-       //error : {message:'User already exists'}
-     //})
-     //}
-   // })
+
 });
 
 app.listen(3000, () => {

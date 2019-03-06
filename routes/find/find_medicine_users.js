@@ -6,8 +6,8 @@ var app =express();
 
 medicine_list = function(req , res){
 
-  Medicine_list.find().then((todo) => {
-  res.send(JSON.stringify(todo,undefined,2));
+  Medicine_list.find({_id:req.params._id}).then((todo) => {
+  res.status(200).send(todo);
   },(err) => {
     console.log('Unable to fetch Onboarding' ,err)
   })

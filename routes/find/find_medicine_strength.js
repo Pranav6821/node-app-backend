@@ -6,10 +6,10 @@ var app =express();
 
 medicine_strength_list = function(req , res){
 
-  Medicine_strength_list.find().then((todo) => {
-  res.send(JSON.stringify(todo,undefined,2));
+  Medicine_strength_list.find({Medicine_id:req.body.Medicine_id}).then((todo) => {
+  res.status(200).send(todo);
   },(err) => {
-    console.log('Unable to fetch Onboarding' ,err)
+    console.log('Unable to strength list' ,err)
   })
 }
 

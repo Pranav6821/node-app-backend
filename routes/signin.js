@@ -1,6 +1,6 @@
 let express =require('express');
 //let router = express.Router();
-// let jwt = require('jsonwebtoken')
+let jwt = require('jsonwebtoken')
 // var bodyParser = require('body-parser');
 // var {mongoose} = require('../db/mongoose');
  var session = require('express-session');
@@ -9,8 +9,8 @@ let express =require('express');
 let app =express();
 
 //app.use(bodyParser.json());
-//app.use(session({secret:'brio43ta3f'}));
-
+app.use(session({secret:'brio43ta3f'}));
+const secret = 'secret'
 // router.get('/',function(req,res){
 //
 // 	// Check if an e-mail address is set in the session.
@@ -23,7 +23,10 @@ let app =express();
 // 	}
 // });
 
-
+// function createToken(){
+//   let expirationDate = Math.floor(Date.now()/1000)+30
+//   var token = jwt.sign({userID : user.Email ,exp :expirationDate}. secret)
+// }
 
 
 signin = function(req , res){
@@ -44,17 +47,22 @@ signin = function(req , res){
         })
     }
     else {
-    //let token = jwt.sign({user : user},'secret',{expiresIn:900});
-    //return res.status(500).json({
-    //title:'Successful',
-    //error : {message:"Login Successful"},
-    req.session.email = req.body.email;
-	req.session.password = req.body.pass;
-  console.log(session.email);
-	res.end('done');
+      let token = jwt.sign({todo :todo},'secret',{expiresIn:90000000});
+      //res.end('token')
+      return res.status(500).json({
+        title:'Successful',
+        token: token,
+        userId: todo._id,
+        //error : {message:token},
+        //error : {message:userid},
+    //req.session.email = req.body.email;
+	  //req.session.password = req.body.pass;
+    //console.log(token);
 //  })
-}
+//}
  })
+}
+});
 }
 
 // router.get('/logout',function(req,res){
@@ -75,4 +83,4 @@ signin = function(req , res){
 //   console.log('Started on port 3001');
 // });
 
-module.exports = signin;
+module.exports = signin ;

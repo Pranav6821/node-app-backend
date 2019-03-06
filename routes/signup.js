@@ -18,8 +18,8 @@ signup = function(req , res){
         Password:req.body.Password,
         FirstName:req.body.FirstName,
         LastName:req.body.LastName,
-        //Feet:req.body.Feet,
-        //Inch:req.body.Inch
+        Addition_Date:Date.now(),
+        Modification_Date:Date.now()
       });
       signupp.save().then((doc) =>{
         res.send(doc);

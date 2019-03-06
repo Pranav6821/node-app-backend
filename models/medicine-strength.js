@@ -8,5 +8,5 @@ module.exports = mongoose.model("Medicine_Strength",new Schema({
     Addition_Date:{type:Date,required:true},
     Modification_Date:{type:Date,required:true},
 },{
-    collection:'medicines'
+    collection:'medicine_strength'
 }))

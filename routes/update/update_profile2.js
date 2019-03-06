@@ -33,7 +33,7 @@ let app =express();
 // }
 
 update2 = function(req , res){
-  users.findOneAndUpdate({'Email' : req.body.Email},{
+  users.findOneAndUpdate({_id:req.params._id},{
       $set :{
 
         GPName:req.body.GPName,
@@ -43,7 +43,8 @@ update2 = function(req , res){
         CareTaker2_No:req.body.CareTaker2_No,
         CareTaker2_Name:req.body.CareTaker2_Name,
         alertbit:req.body.alertbit,
-        appointmentbit:req.body.appointmentbit
+        appointmentbit:req.body.appointmentbit,
+          Modification_Date:Date.now()
       }},{new:true}
     ).then((todo) => {
     res.status(200).json({
